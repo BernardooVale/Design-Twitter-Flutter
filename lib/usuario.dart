@@ -15,15 +15,15 @@ class _UsuarioState extends State<Usuario> {
     Size tamanho = MediaQuery.of(context).size;
     return Scaffold(
       body: ListView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         children: [
           fundoImagem(tamanho),
           Container(
             transform: Matrix4.translationValues(0, -125, 0),
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Icon(
                   Icons.arrow_back_ios_new_rounded,
                   color: Colors.white,
@@ -42,12 +42,12 @@ class _UsuarioState extends State<Usuario> {
           margin: EdgeInsets.symmetric(
               horizontal: tamanho.width * 0.04,
               vertical: tamanho.height * 0.01),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+            children: const [
               Icon(
                   Icons.location_on_rounded,
                   color: Colors.grey,
@@ -79,11 +79,11 @@ class _UsuarioState extends State<Usuario> {
 Widget fundoImagem(Size tamanho){
   return Container(
     height: tamanho.height * 0.225,
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.blue,
       image: DecorationImage(
         fit: BoxFit.cover,
-        image: NetworkImage('https://meulugar.quintoandar.com.br/wp-content/uploads/2023/04/Cidade-Administrativa-de-Minas-Gerais.jpg'),
+        image: AssetImage('lib/imagens/fundo.jpg'),
       )
     ),
   );
@@ -92,7 +92,7 @@ Widget fundoImagem(Size tamanho){
 Widget perfil(BuildContext context){
   return Container(
     transform: Matrix4.translationValues(0, -75, 0),
-    padding: EdgeInsets.symmetric(horizontal: 15),
+    padding: const EdgeInsets.symmetric(horizontal: 15),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -100,18 +100,18 @@ Widget perfil(BuildContext context){
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               backgroundColor: Colors.white,
               radius: 55,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                backgroundImage: AssetImage('lib/imagens/principal.jpg'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>editarPerfil())),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const editarPerfil())),
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                   decoration: BoxDecoration(
@@ -121,7 +121,7 @@ Widget perfil(BuildContext context){
                       ),
                     borderRadius: BorderRadius.circular(32),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Editar perfil",
                     style: TextStyle(color:  Colors.black, fontSize: 20, fontWeight: FontWeight.w400),
                   ),
@@ -130,7 +130,7 @@ Widget perfil(BuildContext context){
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Padding(
@@ -139,7 +139,7 @@ Widget perfil(BuildContext context){
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: [
+                children: const [
                   Text(
                       "CIDADE ADM de MG",
                     style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
@@ -151,17 +151,17 @@ Widget perfil(BuildContext context){
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              Text(
+              const Text(
                 "Perfil Oficial da Cidade Administrativa de MG"
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.location_on_outlined,
                     color: Colors.grey,
@@ -202,7 +202,7 @@ Widget perfil(BuildContext context){
 Widget containerAbas(Size tamanho, BuildContext context){
   return Stack(
     children: <Widget>[
-      Container(
+      SizedBox(
       height: tamanho.height * 1.1,
       width: double.infinity,
       child: abas(tamanho, context),
@@ -220,40 +220,38 @@ Widget abas(Size tamanho, BuildContext context){
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: tamanho * 0.01,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  TabBar(
-                    unselectedLabelColor: Colors.grey,
-                    indicatorColor: Colors.blue,
-                    labelColor: Colors.blue,
-                    isScrollable: true,
-                    tabs: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                            "Atividades",
-                            style: TextStyle(fontSize: 18),
-                        ),
+            child: Column(
+              children: const <Widget>[
+                TabBar(
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: Colors.blue,
+                  labelColor: Colors.blue,
+                  isScrollable: true,
+                  tabs: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                      child: Text(
+                          "Atividades",
+                          style: TextStyle(fontSize: 18),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                            "Sobre",
-                            style: TextStyle(fontSize: 18),
-                        ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                      child: Text(
+                          "Sobre",
+                          style: TextStyle(fontSize: 18),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 5),
-                        child: Text(
-                            "Avisos e Comunicados",
-                            style: TextStyle(fontSize: 18),
-                        ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                      child: Text(
+                          "Avisos e Comunicados",
+                          style: TextStyle(fontSize: 18),
                       ),
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
           body: Center(
@@ -262,7 +260,7 @@ Widget abas(Size tamanho, BuildContext context){
                 atividades(tamanho),
                 sobre(tamanho, context),
                 Column(
-                  children: <Widget>[],
+                  children: const <Widget>[],
                 ),
               ],
             ),
@@ -278,15 +276,15 @@ Widget atividades(Size tamanho){
     children: <Widget>[
       Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: Container(
+        child: SizedBox(
           width: tamanho.width * 0.95,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 25,
-                backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                backgroundImage: AssetImage('lib/imagens/principal.jpg'),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
@@ -295,57 +293,55 @@ Widget atividades(Size tamanho){
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Row(
-                            children:[
-                              Text(
-                                "Cidade ADM de MG",
-                                style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        Row(
+                          children:[
+                            const Text(
+                              "Cidade ADM de MG",
+                              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 1.8),
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: Color.fromRGBO(255, 215, 0, 1.0),
+                                size: 15,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 1.8),
-                                child: Icon(
-                                  Icons.verified_rounded,
-                                  color: Color.fromRGBO(255, 215, 0, 1.0),
-                                  size: 15,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: Text(
-                                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                                    "@cidadeadm"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
-                                child: Text(
-                                  ".",
-                                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  "10 Mai",
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 6.0),
+                              child: Text(
                                   style: TextStyle(color: Colors.grey, fontSize: 12),
+                                  "@cidadeadm"
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+                              child: Text(
+                                ".",
+                                style: TextStyle(color: Colors.grey, fontSize: 20),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 2.0),
+                              child: Text(
+                                "10 Mai",
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12.0),
+                              child: Transform.rotate(
+                                angle: -90 * 3.14 / 180,
+                                child: const Icon(
+                                  Icons.arrow_back_ios_rounded,
+                                  color: Colors.grey,
+                                  size: 10,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Transform.rotate(
-                                  angle: -90 * 3.14 / 180,
-                                  child: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: Colors.grey,
-                                    size: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           child: Text(
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis felis et quam aliquam venenatis.",
@@ -355,13 +351,13 @@ Widget atividades(Size tamanho){
                         Padding(
                           padding: const EdgeInsets.fromLTRB(222, 10, 0, 0),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.messenger_outline_rounded,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
+                                padding: EdgeInsets.only(left: 15.0),
                                 child: Text(
                                   "0",
                                   style: TextStyle(color: Colors.grey, fontSize: 20),
@@ -380,74 +376,72 @@ Widget atividades(Size tamanho){
       ),
       Padding(
         padding: const EdgeInsets.only(top: 5.0),
-        child: Container(
+        child: SizedBox(
           width: tamanho.width * 0.95,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 25,
-                backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                backgroundImage: AssetImage('lib/imagens/principal.jpg'),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                 child: Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Row(
-                            children:[
-                              Text(
-                                "Cidade ADM de MG",
-                                style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        Row(
+                          children:[
+                            const Text(
+                              "Cidade ADM de MG",
+                              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 1.8),
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: Color.fromRGBO(255, 215, 0, 1.0),
+                                size: 15,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 1.8),
-                                child: Icon(
-                                  Icons.verified_rounded,
-                                  color: Color.fromRGBO(255, 215, 0, 1.0),
-                                  size: 15,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: Text(
-                                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                                    "@cidadeadm"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
-                                child: Text(
-                                  ".",
-                                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  "10 Mai",
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 6.0),
+                              child: Text(
                                   style: TextStyle(color: Colors.grey, fontSize: 12),
+                                  "@cidadeadm"
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+                              child: Text(
+                                ".",
+                                style: TextStyle(color: Colors.grey, fontSize: 20),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 2.0),
+                              child: Text(
+                                "10 Mai",
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12.0),
+                              child: Transform.rotate(
+                                angle: -90 * 3.14 / 180,
+                                child: const Icon(
+                                  Icons.arrow_back_ios_rounded,
+                                  color: Colors.grey,
+                                  size: 10,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Transform.rotate(
-                                  angle: -90 * 3.14 / 180,
-                                  child: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: Colors.grey,
-                                    size: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           child: Text(
                             "Lorem ipsum dolor sit amet.",
@@ -457,13 +451,13 @@ Widget atividades(Size tamanho){
                         Padding(
                           padding: const EdgeInsets.fromLTRB(222, 10, 0, 0),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.messenger_outline_rounded,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
+                                padding: EdgeInsets.only(left: 15.0),
                                 child: Text(
                                   "0",
                                   style: TextStyle(color: Colors.grey, fontSize: 20),
@@ -482,74 +476,72 @@ Widget atividades(Size tamanho){
       ),
       Padding(
         padding: const EdgeInsets.only(top: 5.0),
-        child: Container(
+        child: SizedBox(
           width: tamanho.width * 0.95,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 25,
-                backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                backgroundImage: AssetImage('lib/imagens/principal.jpg'),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                 child: Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Row(
-                            children:[
-                              Text(
-                                "Cidade ADM de MG",
-                                style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        Row(
+                          children:[
+                            const Text(
+                              "Cidade ADM de MG",
+                              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 1.8),
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: Color.fromRGBO(255, 215, 0, 1.0),
+                                size: 15,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 1.8),
-                                child: Icon(
-                                  Icons.verified_rounded,
-                                  color: Color.fromRGBO(255, 215, 0, 1.0),
-                                  size: 15,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: Text(
-                                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                                    "@cidadeadm"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
-                                child: Text(
-                                  ".",
-                                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  "10 Mai",
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 6.0),
+                              child: Text(
                                   style: TextStyle(color: Colors.grey, fontSize: 12),
+                                  "@cidadeadm"
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+                              child: Text(
+                                ".",
+                                style: TextStyle(color: Colors.grey, fontSize: 20),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 2.0),
+                              child: Text(
+                                "10 Mai",
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12.0),
+                              child: Transform.rotate(
+                                angle: -90 * 3.14 / 180,
+                                child: const Icon(
+                                  Icons.arrow_back_ios_rounded,
+                                  color: Colors.grey,
+                                  size: 10,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Transform.rotate(
-                                  angle: -90 * 3.14 / 180,
-                                  child: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: Colors.grey,
-                                    size: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           child: Text(
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis felis et quam aliquam venenatis. Etiam justo sem, venenatis condimentum justo eu",
@@ -559,13 +551,13 @@ Widget atividades(Size tamanho){
                         Padding(
                           padding: const EdgeInsets.fromLTRB(222, 10, 0, 0),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.messenger_outline_rounded,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
+                                padding: EdgeInsets.only(left: 15.0),
                                 child: Text(
                                   "0",
                                   style: TextStyle(color: Colors.grey, fontSize: 20),
@@ -584,74 +576,72 @@ Widget atividades(Size tamanho){
       ),
       Padding(
         padding: const EdgeInsets.only(top: 5.0),
-        child: Container(
+        child: SizedBox(
           width: tamanho.width * 0.95,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 25,
-                backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                backgroundImage: AssetImage('lib/imagens/principal.jpg'),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                 child: Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Row(
-                            children:[
-                              Text(
-                                "Cidade ADM de MG",
-                                style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                        Row(
+                          children:[
+                            const Text(
+                              "Cidade ADM de MG",
+                              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 1.8),
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: Color.fromRGBO(255, 215, 0, 1.0),
+                                size: 15,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 1.8),
-                                child: Icon(
-                                  Icons.verified_rounded,
-                                  color: Color.fromRGBO(255, 215, 0, 1.0),
-                                  size: 15,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.0),
-                                child: Text(
-                                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                                    "@cidadeadm"
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
-                                child: Text(
-                                  ".",
-                                  style: TextStyle(color: Colors.grey, fontSize: 20),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2.0),
-                                child: Text(
-                                  "10 Mai",
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 6.0),
+                              child: Text(
                                   style: TextStyle(color: Colors.grey, fontSize: 12),
+                                  "@cidadeadm"
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+                              child: Text(
+                                ".",
+                                style: TextStyle(color: Colors.grey, fontSize: 20),
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 2.0),
+                              child: Text(
+                                "10 Mai",
+                                style: TextStyle(color: Colors.grey, fontSize: 12),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 12.0),
+                              child: Transform.rotate(
+                                angle: -90 * 3.14 / 180,
+                                child: const Icon(
+                                  Icons.arrow_back_ios_rounded,
+                                  color: Colors.grey,
+                                  size: 10,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12.0),
-                                child: Transform.rotate(
-                                  angle: -90 * 3.14 / 180,
-                                  child: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: Colors.grey,
-                                    size: 10,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
+                        const SizedBox(
                           width: 260,
                           child: Text(
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis felis et quam aliquam venenatis.",
@@ -661,13 +651,13 @@ Widget atividades(Size tamanho){
                         Padding(
                           padding: const EdgeInsets.fromLTRB(222, 10, 0, 0),
                           child: Row(
-                            children: [
+                            children: const [
                               Icon(
                                 Icons.messenger_outline_rounded,
                                 color: Colors.grey,
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
+                                padding: EdgeInsets.only(left: 15.0),
                                 child: Text(
                                   "0",
                                   style: TextStyle(color: Colors.grey, fontSize: 20),
@@ -692,13 +682,13 @@ Widget sobre(Size tamanho, BuildContext context){
   return Padding(
     padding: const EdgeInsets.only(top: 16.0),
     child: Center(
-      child: Container(
+      child: SizedBox(
         width: tamanho.width * 0.9,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>editarSobre())),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const editarSobre())),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                 decoration: BoxDecoration(
@@ -708,14 +698,14 @@ Widget sobre(Size tamanho, BuildContext context){
                   ),
                   borderRadius: BorderRadius.circular(32),
                 ),
-                child: Text(
+                child: const Text(
                   "Editar seção sobre",
                   style: TextStyle(color:  Colors.black, fontSize: 20, fontWeight: FontWeight.w400),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 30, 0, 20),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 20),
               child: Text(
                 "Horário de Atendimento",
                 style: TextStyle(color:  Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
@@ -725,17 +715,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                       'Segunda-Feira',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                       '09:00 às 17:00',
                   ),
@@ -746,17 +736,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Terça-Feira',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                     '09:00 às 17:00',
                   ),
@@ -767,17 +757,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Quarta-Feira',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                     '09:00 às 17:00',
                   ),
@@ -788,17 +778,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Quinta-Feira',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                     '09:00 às 17:00',
                   ),
@@ -809,17 +799,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Sexta-Feira',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                     '09:00 às 17:00',
                   ),
@@ -830,17 +820,17 @@ Widget sobre(Size tamanho, BuildContext context){
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Sábado',
                     style: TextStyle(color: Colors.grey),
                   ),
                   Expanded(child: Text(
                       '.' * 100,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                       maxLines: 1
                   )
                   ),
-                  Text(
+                  const Text(
                     style: TextStyle(color: Colors.grey),
                     'Fechado',
                   ),
@@ -849,24 +839,24 @@ Widget sobre(Size tamanho, BuildContext context){
             ),
             Row(
               children: [
-                Text(
+                const Text(
                   'Domingo',
                   style: TextStyle(color: Colors.grey),
                 ),
                 Expanded(child: Text(
                     '.' * 100,
-                    style: TextStyle(color: Colors.grey),
+                    style: const TextStyle(color: Colors.grey),
                     maxLines: 1
                 )
                 ),
-                Text(
+                const Text(
                   style: TextStyle(color: Colors.grey),
                   'Fechado',
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 20.0),
               child: Text(
                 "Edifícios",
                 style: TextStyle(color:  Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
@@ -874,18 +864,18 @@ Widget sobre(Size tamanho, BuildContext context){
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child: Container(
+              child: SizedBox(
                 width: tamanho.width * 0.95,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage('https://www.minasgerais.com.br/imagens/atracoes/1503600216YvwwE5iHPo.jpg'),
+                      backgroundImage: AssetImage('lib/imagens/sul.jpg'),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -897,20 +887,20 @@ Widget sobre(Size tamanho, BuildContext context){
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children:[
-                                    Text(
+                                    const Text(
                                       "Edifício Sul",
                                       style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                                     ),
-                                    Padding(padding: EdgeInsets.only(left: 6)),
-                                    Icon(
+                                    const Padding(padding: EdgeInsets.only(left: 6)),
+                                    const Icon(
                                       Icons.verified_rounded,
                                       color: Colors.deepPurpleAccent,
                                       size: 15,
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 6.0),
+                                      padding: const EdgeInsets.only(left: 6.0),
                                       child: Row(
-                                        children: [
+                                        children: const [
                                           Text(
                                               style: TextStyle(color: Colors.grey, fontSize: 12),
                                               "@edificiosul"
@@ -923,9 +913,9 @@ Widget sobre(Size tamanho, BuildContext context){
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: tamanho.width * 0.7,
-                                  child: Text(
+                                  child: const Text(
                                     "Edifício da Cidade Administrativa de MG",
                                     style: TextStyle(fontSize: 15),
                                   ),
@@ -941,18 +931,18 @@ Widget sobre(Size tamanho, BuildContext context){
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: Container(
+              child: SizedBox(
                 width: tamanho.width * 0.95,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage('https://imgsapp.em.com.br/app/noticia_127983242361/2020/03/04/1125929/20200304143241762963e.jpg'),
+                      backgroundImage: AssetImage('lib/imagens/norte.jpg'),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -964,20 +954,20 @@ Widget sobre(Size tamanho, BuildContext context){
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children:[
-                                    Text(
+                                    const Text(
                                       "Edifício Norte",
                                       style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                                     ),
-                                    Padding(padding: EdgeInsets.only(left: 6)),
-                                    Icon(
+                                    const Padding(padding: EdgeInsets.only(left: 6)),
+                                    const Icon(
                                       Icons.verified_rounded,
                                       color: Colors.deepPurpleAccent,
                                       size: 15,
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(left: 6.0),
+                                      padding: const EdgeInsets.only(left: 6.0),
                                       child: Row(
-                                        children: [
+                                        children: const [
                                           Text(
                                               style: TextStyle(color: Colors.grey, fontSize: 12),
                                               "@edificionorte"
@@ -990,9 +980,9 @@ Widget sobre(Size tamanho, BuildContext context){
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: tamanho.width * 0.7,
-                                  child: Text(
+                                  child: const Text(
                                     "Edifício da Cidade Administrativa de MG",
                                     style: TextStyle(fontSize: 15),
                                   ),
@@ -1008,18 +998,18 @@ Widget sobre(Size tamanho, BuildContext context){
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: Container(
+              child: SizedBox(
                 width: tamanho.width * 0.95,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage('https://soubh.uai.com.br/uploads/post/image/5215/main_133402_Cidade_Administrativa_MG_3.jpg'),
+                      backgroundImage: AssetImage('lib/imagens/central.jpg'),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -1030,20 +1020,20 @@ Widget sobre(Size tamanho, BuildContext context){
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children:[
-                                Text(
+                                const Text(
                                   "Edifício Central",
                                   style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
                                 ),
-                                Padding(padding: EdgeInsets.only(left: 6)),
-                                Icon(
+                                const Padding(padding: EdgeInsets.only(left: 6)),
+                                const Icon(
                                   Icons.verified_rounded,
                                   color: Colors.deepPurpleAccent,
                                   size: 15,
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 6.0),
+                                  padding: const EdgeInsets.only(left: 6.0),
                                   child: Row(
-                                    children: [
+                                    children: const [
                                       Text(
                                           style: TextStyle(color: Colors.grey, fontSize: 12),
                                           "@edificiocentral"
@@ -1056,9 +1046,9 @@ Widget sobre(Size tamanho, BuildContext context){
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
-                            child: Container(
+                            child: SizedBox(
                               width: tamanho.width * 0.7,
-                              child: Text(
+                              child: const Text(
                                 "Edifício da Cidade Administrativa de MG",
                                 style: TextStyle(fontSize: 15),
                               ),
@@ -1071,8 +1061,8 @@ Widget sobre(Size tamanho, BuildContext context){
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 20.0),
               child: Text(
                 "Localização",
                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
@@ -1081,7 +1071,7 @@ Widget sobre(Size tamanho, BuildContext context){
             Padding(
               padding: const EdgeInsets.only(top: 12.0),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                       Icons.location_on_outlined,
                     color: Colors.deepPurpleAccent,
@@ -1100,15 +1090,15 @@ Widget sobre(Size tamanho, BuildContext context){
                 height: tamanho.width * 0.4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     fit: BoxFit.fill,
-                    image: NetworkImage("https://d2x3xhvgiqkx42.cloudfront.net/12345678-1234-1234-1234-1234567890ab/2d3f30b2-74a7-4aec-8ef7-67de4fff5318/2022/08/22/e5750483-e646-4b3b-9c11-f1b62b8466ae/2636f0c5-1324-4177-b212-e9f7fc5850ee.png")
+                    image: AssetImage('lib/imagens/mapa.jpg'),
                   )
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+            const Padding(
+              padding: EdgeInsets.only(top: 8.0),
               child: Text(
                   "Contato",
                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
@@ -1117,13 +1107,13 @@ Widget sobre(Size tamanho, BuildContext context){
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.whatsapp_rounded,
                     color: Colors.deepPurpleAccent,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: EdgeInsets.only(left: 8.0),
                     child: Text(
                         "+55 15 91234-5678"
                     ),
@@ -1134,13 +1124,13 @@ Widget sobre(Size tamanho, BuildContext context){
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
               child: Row(
-                children: [
+                children: const [
                   Icon(
                     Icons.email_outlined,
                     color: Colors.deepPurpleAccent,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: EdgeInsets.only(left: 8.0),
                     child: Text(
                         "edificiosul@governomg.com.br"
                     ),

@@ -20,21 +20,21 @@ class _editarPerfilState extends State<editarPerfil> {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Usuario()));
+                MaterialPageRoute(builder: (context) => const Usuario()));
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: Colors.blue,
           ),
         ),
-        title: Text(
+        title: const Text(
           "Editar perfil",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        actions: [
+        actions: const [
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: EdgeInsets.only(right: 8.0),
               child: Text(
                 "Salvar",
                 style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18),
@@ -46,12 +46,12 @@ class _editarPerfilState extends State<editarPerfil> {
       body: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Center(
-          child: Container(
+          child: SizedBox(
             width: tamanho.width * 0.9,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Imagem de perfil",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 ),
@@ -60,9 +60,9 @@ class _editarPerfilState extends State<editarPerfil> {
                   child: Center(
                     child: Stack(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 50,
-                          backgroundImage: NetworkImage('https://www.agenciaminas.mg.gov.br/system/news/images/000/112/020/original/cidade-administrtiva-credito-gil-leonardi-IMG_8998.jpg?1637170227'),
+                          backgroundImage: AssetImage('lib/imagens/principal.jpg'),
                         ),
                         Container(
                           width: 100,
@@ -75,10 +75,10 @@ class _editarPerfilState extends State<editarPerfil> {
                         Container(
                           width: 100,
                           height: 100,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.camera_alt_rounded,
                             color: Colors.white,
                             size: 35,
@@ -88,8 +88,8 @@ class _editarPerfilState extends State<editarPerfil> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 26.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 26.0),
                   child: Text(
                     "Nome",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -98,7 +98,7 @@ class _editarPerfilState extends State<editarPerfil> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 26),
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       isDense: true,
                       contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                       border: OutlineInputBorder(),
@@ -106,8 +106,8 @@ class _editarPerfilState extends State<editarPerfil> {
                     )
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
                     "Bio",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -116,7 +116,7 @@ class _editarPerfilState extends State<editarPerfil> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 26.0),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         isDense: true,
                         contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         border: OutlineInputBorder(),
@@ -124,8 +124,8 @@ class _editarPerfilState extends State<editarPerfil> {
                       )
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
                     "Localização",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -134,7 +134,7 @@ class _editarPerfilState extends State<editarPerfil> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 26.0),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         isDense: true,
                         contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         border: OutlineInputBorder(),
@@ -142,8 +142,8 @@ class _editarPerfilState extends State<editarPerfil> {
                       )
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
                     "Administrador Geral",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -152,7 +152,7 @@ class _editarPerfilState extends State<editarPerfil> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 26.0),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         isDense: true,
                         contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                         border: OutlineInputBorder(),
@@ -162,11 +162,11 @@ class _editarPerfilState extends State<editarPerfil> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Container(
+                  child: SizedBox(
                     width: tamanho.width * 0.9,
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Moderadores",
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                         ),
@@ -180,7 +180,7 @@ class _editarPerfilState extends State<editarPerfil> {
                             ),
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          child: Text(
+                          child: const Text(
                             "Adicionar",
                             style: TextStyle(color:  Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
                           ),
@@ -200,16 +200,16 @@ class _editarPerfilState extends State<editarPerfil> {
                   ),
                   child: Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
                         child: Text(
                           "@paulo.oliveira32",
                           style: TextStyle(color:  Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
                         ),
                       ),
                       Expanded(child: Container()),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 8.0),
                         child: Icon(
                           Icons.cancel_rounded,
                           color: Colors.red,
@@ -231,16 +231,16 @@ class _editarPerfilState extends State<editarPerfil> {
                     ),
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
                           child: Text(
                             "@21joaobotelho",
                             style: TextStyle(color:  Colors.black, fontSize: 15, fontWeight: FontWeight.w500),
                           ),
                         ),
                         Expanded(child: Container()),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 8.0),
                           child: Icon(
                             Icons.cancel_rounded,
                             color: Colors.red,

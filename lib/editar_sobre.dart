@@ -12,8 +12,8 @@ class _editarSobreState extends State<editarSobre> {
   @override
   Widget build(BuildContext context) {
 
-    TimeOfDay horario_abre = TimeOfDay(hour: 9, minute: 00);
-    TimeOfDay horario_fecha = TimeOfDay(hour: 17, minute: 00);
+    TimeOfDay horarioAbre = const TimeOfDay(hour: 9, minute: 00);
+    TimeOfDay horarioFecha = const TimeOfDay(hour: 17, minute: 00);
     Size tamanho = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -24,21 +24,21 @@ class _editarSobreState extends State<editarSobre> {
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Usuario()));
+                MaterialPageRoute(builder: (context) => const Usuario()));
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: Colors.blue,
           ),
         ),
-        title: Text(
+        title: const Text(
           "Editar sobre",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        actions: [
+        actions: const [
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: EdgeInsets.only(right: 8.0),
               child: Text(
                 "Salvar",
                 style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18),
@@ -51,12 +51,12 @@ class _editarSobreState extends State<editarSobre> {
         padding: const EdgeInsets.only(top: 20),
         child: Center(
           child: SingleChildScrollView(
-            child: Container(
+            child: SizedBox(
               width: tamanho.width * 0.9,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Horário de atendimento",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                   ),
@@ -74,12 +74,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Segunda-feira",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -92,14 +92,14 @@ class _editarSobreState extends State<editarSobre> {
                           padding: const EdgeInsets.only(left: 4.0),
                           child: InkWell(
                             onTap: () async {
-                              TimeOfDay? novo_horario = await showTimePicker(
-                                  context: context, initialTime: horario_abre
+                              TimeOfDay? novoHorario = await showTimePicker(
+                                  context: context, initialTime: horarioAbre
                               );
-                              if(novo_horario == null){
+                              if(novoHorario == null){
                                 return;
                               }
                               setState(() {
-                                horario_abre = novo_horario;
+                                horarioAbre = novoHorario;
                               });
                             },
                             child: Container(
@@ -114,13 +114,13 @@ class _editarSobreState extends State<editarSobre> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${horario_abre.hour.toString().padLeft(2, '0')}:${horario_abre.minute.toString().padLeft(2, '0')}',
+                                    '${horarioAbre.hour.toString().padLeft(2, '0')}:${horarioAbre.minute.toString().padLeft(2, '0')}',
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 2.0),
                                     child: Transform.rotate(
                                       angle: -90 * 3.14 / 180,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios_rounded,
                                         color: Colors.blue,
                                       ),
@@ -131,23 +131,23 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Text(
                               "às"
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            TimeOfDay? novo_horario = await showTimePicker(
+                            TimeOfDay? novoHorario = await showTimePicker(
                                 context: context,
-                                initialTime: horario_fecha
+                                initialTime: horarioFecha
                             );
-                            if(novo_horario == null){
+                            if(novoHorario == null){
                               return;
                             }
                             setState(() {
-                              horario_fecha = novo_horario;
+                              horarioFecha = novoHorario;
                             });
                           },
                           child: Container(
@@ -162,13 +162,13 @@ class _editarSobreState extends State<editarSobre> {
                             child: Row(
                               children: [
                                 Text(
-                                  '${horario_fecha.hour.toString().padLeft(2, '0')}:${horario_fecha.minute.toString().padLeft(2, '0')}',
+                                  '${horarioFecha.hour.toString().padLeft(2, '0')}:${horarioFecha.minute.toString().padLeft(2, '0')}',
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -195,12 +195,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Terça-feira",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -213,14 +213,14 @@ class _editarSobreState extends State<editarSobre> {
                           padding: const EdgeInsets.only(left: 4.0),
                           child: InkWell(
                             onTap: () async {
-                              TimeOfDay? novo_horario = await showTimePicker(
-                                  context: context, initialTime: horario_abre
+                              TimeOfDay? novoHorario = await showTimePicker(
+                                  context: context, initialTime: horarioAbre
                               );
-                              if(novo_horario == null){
+                              if(novoHorario == null){
                                 return;
                               }
                               setState(() {
-                                horario_abre = novo_horario;
+                                horarioAbre = novoHorario;
                               });
                             },
                             child: Container(
@@ -235,13 +235,13 @@ class _editarSobreState extends State<editarSobre> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${horario_abre.hour.toString().padLeft(2, '0')}:${horario_abre.minute.toString().padLeft(2, '0')}',
+                                    '${horarioAbre.hour.toString().padLeft(2, '0')}:${horarioAbre.minute.toString().padLeft(2, '0')}',
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 2.0),
                                     child: Transform.rotate(
                                       angle: -90 * 3.14 / 180,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios_rounded,
                                         color: Colors.blue,
                                       ),
@@ -252,23 +252,23 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Text(
                               "às"
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            TimeOfDay? novo_horario = await showTimePicker(
+                            TimeOfDay? novoHorario = await showTimePicker(
                                 context: context,
-                                initialTime: horario_fecha
+                                initialTime: horarioFecha
                             );
-                            if(novo_horario == null){
+                            if(novoHorario == null){
                               return;
                             }
                             setState(() {
-                              horario_fecha = novo_horario;
+                              horarioFecha = novoHorario;
                             });
                           },
                           child: Container(
@@ -283,13 +283,13 @@ class _editarSobreState extends State<editarSobre> {
                             child: Row(
                               children: [
                                 Text(
-                                  '${horario_fecha.hour.toString().padLeft(2, '0')}:${horario_fecha.minute.toString().padLeft(2, '0')}',
+                                  '${horarioFecha.hour.toString().padLeft(2, '0')}:${horarioFecha.minute.toString().padLeft(2, '0')}',
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -316,12 +316,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Quarta-feira",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -334,14 +334,14 @@ class _editarSobreState extends State<editarSobre> {
                           padding: const EdgeInsets.only(left: 4.0),
                           child: InkWell(
                             onTap: () async {
-                              TimeOfDay? novo_horario = await showTimePicker(
-                                  context: context, initialTime: horario_abre
+                              TimeOfDay? novoHorario = await showTimePicker(
+                                  context: context, initialTime: horarioAbre
                               );
-                              if(novo_horario == null){
+                              if(novoHorario == null){
                                 return;
                               }
                               setState(() {
-                                horario_abre = novo_horario;
+                                horarioAbre = novoHorario;
                               });
                             },
                             child: Container(
@@ -356,13 +356,13 @@ class _editarSobreState extends State<editarSobre> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${horario_abre.hour.toString().padLeft(2, '0')}:${horario_abre.minute.toString().padLeft(2, '0')}',
+                                    '${horarioAbre.hour.toString().padLeft(2, '0')}:${horarioAbre.minute.toString().padLeft(2, '0')}',
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 2.0),
                                     child: Transform.rotate(
                                       angle: -90 * 3.14 / 180,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios_rounded,
                                         color: Colors.blue,
                                       ),
@@ -373,23 +373,23 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Text(
                               "às"
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            TimeOfDay? novo_horario = await showTimePicker(
+                            TimeOfDay? novoHorario = await showTimePicker(
                                 context: context,
-                                initialTime: horario_fecha
+                                initialTime: horarioFecha
                             );
-                            if(novo_horario == null){
+                            if(novoHorario == null){
                               return;
                             }
                             setState(() {
-                              horario_fecha = novo_horario;
+                              horarioFecha = novoHorario;
                             });
                           },
                           child: Container(
@@ -404,13 +404,13 @@ class _editarSobreState extends State<editarSobre> {
                             child: Row(
                               children: [
                                 Text(
-                                  '${horario_fecha.hour.toString().padLeft(2, '0')}:${horario_fecha.minute.toString().padLeft(2, '0')}',
+                                  '${horarioFecha.hour.toString().padLeft(2, '0')}:${horarioFecha.minute.toString().padLeft(2, '0')}',
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -437,12 +437,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Quinta-feira",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -455,14 +455,14 @@ class _editarSobreState extends State<editarSobre> {
                           padding: const EdgeInsets.only(left: 4.0),
                           child: InkWell(
                             onTap: () async {
-                              TimeOfDay? novo_horario = await showTimePicker(
-                                  context: context, initialTime: horario_abre
+                              TimeOfDay? novoHorario = await showTimePicker(
+                                  context: context, initialTime: horarioAbre
                               );
-                              if(novo_horario == null){
+                              if(novoHorario == null){
                                 return;
                               }
                               setState(() {
-                                horario_abre = novo_horario;
+                                horarioAbre = novoHorario;
                               });
                             },
                             child: Container(
@@ -477,13 +477,13 @@ class _editarSobreState extends State<editarSobre> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${horario_abre.hour.toString().padLeft(2, '0')}:${horario_abre.minute.toString().padLeft(2, '0')}',
+                                    '${horarioAbre.hour.toString().padLeft(2, '0')}:${horarioAbre.minute.toString().padLeft(2, '0')}',
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 2.0),
                                     child: Transform.rotate(
                                       angle: -90 * 3.14 / 180,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios_rounded,
                                         color: Colors.blue,
                                       ),
@@ -494,23 +494,23 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Text(
                               "às"
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            TimeOfDay? novo_horario = await showTimePicker(
+                            TimeOfDay? novoHorario = await showTimePicker(
                                 context: context,
-                                initialTime: horario_fecha
+                                initialTime: horarioFecha
                             );
-                            if(novo_horario == null){
+                            if(novoHorario == null){
                               return;
                             }
                             setState(() {
-                              horario_fecha = novo_horario;
+                              horarioFecha = novoHorario;
                             });
                           },
                           child: Container(
@@ -525,13 +525,13 @@ class _editarSobreState extends State<editarSobre> {
                             child: Row(
                               children: [
                                 Text(
-                                  '${horario_fecha.hour.toString().padLeft(2, '0')}:${horario_fecha.minute.toString().padLeft(2, '0')}',
+                                  '${horarioFecha.hour.toString().padLeft(2, '0')}:${horarioFecha.minute.toString().padLeft(2, '0')}',
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -558,12 +558,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Sexta-feira",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -576,14 +576,14 @@ class _editarSobreState extends State<editarSobre> {
                           padding: const EdgeInsets.only(left: 4.0),
                           child: InkWell(
                             onTap: () async {
-                              TimeOfDay? novo_horario = await showTimePicker(
-                                  context: context, initialTime: horario_abre
+                              TimeOfDay? novoHorario = await showTimePicker(
+                                  context: context, initialTime: horarioAbre
                               );
-                              if(novo_horario == null){
+                              if(novoHorario == null){
                                 return;
                               }
                               setState(() {
-                                horario_abre = novo_horario;
+                                horarioAbre = novoHorario;
                               });
                             },
                             child: Container(
@@ -598,13 +598,13 @@ class _editarSobreState extends State<editarSobre> {
                               child: Row(
                                 children: [
                                   Text(
-                                    '${horario_abre.hour.toString().padLeft(2, '0')}:${horario_abre.minute.toString().padLeft(2, '0')}',
+                                    '${horarioAbre.hour.toString().padLeft(2, '0')}:${horarioAbre.minute.toString().padLeft(2, '0')}',
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 2.0),
                                     child: Transform.rotate(
                                       angle: -90 * 3.14 / 180,
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.arrow_back_ios_rounded,
                                         color: Colors.blue,
                                       ),
@@ -615,23 +615,23 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
                           child: Text(
                               "às"
                           ),
                         ),
                         InkWell(
                           onTap: () async {
-                            TimeOfDay? novo_horario = await showTimePicker(
+                            TimeOfDay? novoHorario = await showTimePicker(
                                 context: context,
-                                initialTime: horario_fecha
+                                initialTime: horarioFecha
                             );
-                            if(novo_horario == null){
+                            if(novoHorario == null){
                               return;
                             }
                             setState(() {
-                              horario_fecha = novo_horario;
+                              horarioFecha = novoHorario;
                             });
                           },
                           child: Container(
@@ -646,13 +646,13 @@ class _editarSobreState extends State<editarSobre> {
                             child: Row(
                               children: [
                                 Text(
-                                  '${horario_fecha.hour.toString().padLeft(2, '0')}:${horario_fecha.minute.toString().padLeft(2, '0')}',
+                                  '${horarioFecha.hour.toString().padLeft(2, '0')}:${horarioFecha.minute.toString().padLeft(2, '0')}',
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -679,12 +679,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Sábado",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -707,8 +707,8 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                             child: Row(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 8),
                                   child: Text(
                                     'Fechado',
                                   ),
@@ -718,7 +718,7 @@ class _editarSobreState extends State<editarSobre> {
                                   padding: const EdgeInsets.only(right: 8),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -745,12 +745,12 @@ class _editarSobreState extends State<editarSobre> {
                                   width: 1
                               )
                           ),
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.center,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 4.0),
+                                padding: EdgeInsets.only(left: 4.0),
                                 child: Text(
                                   "Domingo",
                                   style: TextStyle(color: Colors.black,fontSize: 17),
@@ -773,8 +773,8 @@ class _editarSobreState extends State<editarSobre> {
                             ),
                             child: Row(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 8.0),
                                   child: Text(
                                     'Fechado',
                                   ),
@@ -784,7 +784,7 @@ class _editarSobreState extends State<editarSobre> {
                                   padding: const EdgeInsets.only(right: 8),
                                   child: Transform.rotate(
                                     angle: -90 * 3.14 / 180,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.arrow_back_ios_rounded,
                                       color: Colors.blue,
                                     ),
@@ -799,12 +799,12 @@ class _editarSobreState extends State<editarSobre> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: Container(
+                    child: SizedBox(
                       width: tamanho.width * 0.9,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Edifícios",
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                           ),
@@ -817,7 +817,7 @@ class _editarSobreState extends State<editarSobre> {
                               ),
                               borderRadius: BorderRadius.circular(16),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Adicionar",
                               style: TextStyle(color:  Colors.black, fontSize: 12, fontWeight: FontWeight.w500),
                             ),
@@ -826,22 +826,22 @@ class _editarSobreState extends State<editarSobre> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: tamanho.width * 0.95,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 25,
-                          backgroundImage: NetworkImage('https://www.minasgerais.com.br/imagens/atracoes/1503600216YvwwE5iHPo.jpg'),
+                          backgroundImage: AssetImage('lib/imagens/sul.jpg'),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                           child: Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: tamanho.width *0.7,
                                   child: Column(
                                     children: [
@@ -849,7 +849,7 @@ class _editarSobreState extends State<editarSobre> {
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children:[
                                           Row(
-                                            children: [
+                                            children: const [
                                               Text(
                                                 "Edifício Sul",
                                                 style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
@@ -864,7 +864,7 @@ class _editarSobreState extends State<editarSobre> {
                                           ),
                                           Transform.rotate(
                                             angle: -90 * 3.14 / 180,
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.arrow_back_ios_rounded,
                                               color: Colors.grey,
                                             ),
@@ -873,46 +873,44 @@ class _editarSobreState extends State<editarSobre> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 20.0),
-                                        child: Container(
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                "Administrador",
-                                                style: TextStyle(fontWeight: FontWeight.bold),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 4.0),
-                                                child: Container(
-                                                  height: tamanho.height * 0.05,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 1,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              "Administrador",
+                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left: 4.0),
+                                              child: Container(
+                                                height: tamanho.height * 0.05,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius: BorderRadius.circular(4),
+                                                ),
+                                                child: Row(
+                                                  children: const [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(left: 4.0),
+                                                      child: Text(
+                                                        '@felipeluizz_',
+                                                      ),
                                                     ),
-                                                    borderRadius: BorderRadius.circular(4),
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 4.0),
-                                                        child: Text(
-                                                          '@felipeluizz_',
-                                                        ),
+                                                    Padding(
+                                                      padding: EdgeInsets.symmetric(horizontal: 5),
+                                                      child: Icon(
+                                                        Icons.mode_edit_rounded,
+                                                        color: Colors.grey,
                                                       ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                        child: Icon(
-                                                          Icons.mode_edit_rounded,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       )
                                     ],
@@ -927,7 +925,7 @@ class _editarSobreState extends State<editarSobre> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
                             width: 1,
@@ -938,23 +936,23 @@ class _editarSobreState extends State<editarSobre> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top:16),
-                    child: Container(
+                    padding: const EdgeInsets.only(top:16),
+                    child: SizedBox(
                     width: tamanho.width * 0.95,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 25,
-                          backgroundImage: NetworkImage('https://imgsapp.em.com.br/app/noticia_127983242361/2020/03/04/1125929/20200304143241762963e.jpg'),
+                          backgroundImage: AssetImage('lib/imagens/norte.jpg'),
                         ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                           child: Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 10.0),
-                                child: Container(
+                                child: SizedBox(
                                   width: tamanho.width *0.7,
                                   child: Column(
                                     children: [
@@ -962,7 +960,7 @@ class _editarSobreState extends State<editarSobre> {
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children:[
                                           Row(
-                                            children: [
+                                            children: const [
                                               Text(
                                                 "Edifício Norte",
                                                 style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
@@ -977,7 +975,7 @@ class _editarSobreState extends State<editarSobre> {
                                           ),
                                           Transform.rotate(
                                             angle: -90 * 3.14 / 180,
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.arrow_back_ios_rounded,
                                               color: Colors.grey,
                                             ),
@@ -986,46 +984,44 @@ class _editarSobreState extends State<editarSobre> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 20.0),
-                                        child: Container(
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                "Administrador",
-                                                style: TextStyle(fontWeight: FontWeight.bold),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 4.0),
-                                                child: Container(
-                                                  height: tamanho.height * 0.05,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 1,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const Text(
+                                              "Administrador",
+                                              style: TextStyle(fontWeight: FontWeight.bold),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left: 4.0),
+                                              child: Container(
+                                                height: tamanho.height * 0.05,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius: BorderRadius.circular(4),
+                                                ),
+                                                child: Row(
+                                                  children: const [
+                                                    Padding(
+                                                      padding: EdgeInsets.only(left: 4.0),
+                                                      child: Text(
+                                                        '@robertapaula20',
+                                                      ),
                                                     ),
-                                                    borderRadius: BorderRadius.circular(4),
-                                                  ),
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 4.0),
-                                                        child: Text(
-                                                          '@robertapaula20',
-                                                        ),
+                                                    Padding(
+                                                      padding: EdgeInsets.symmetric(horizontal: 5),
+                                                      child: Icon(
+                                                        Icons.mode_edit_rounded,
+                                                        color: Colors.grey,
                                                       ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                        child: Icon(
-                                                          Icons.mode_edit_rounded,
-                                                          color: Colors.grey,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       )
                                     ],
@@ -1041,7 +1037,7 @@ class _editarSobreState extends State<editarSobre> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           border: Border(
                               bottom: BorderSide(
                                 width: 1,
@@ -1053,22 +1049,22 @@ class _editarSobreState extends State<editarSobre> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
-                    child: Container(
+                    child: SizedBox(
                       width: tamanho.width * 0.95,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 25,
-                            backgroundImage: NetworkImage('https://soubh.uai.com.br/uploads/post/image/5215/main_133402_Cidade_Administrativa_MG_3.jpg'),
+                            backgroundImage: AssetImage('lib/imagens/central.jpg'),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
                             child: Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 10.0),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: tamanho.width *0.7,
                                     child: Column(
                                       children: [
@@ -1076,7 +1072,7 @@ class _editarSobreState extends State<editarSobre> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children:[
                                             Row(
-                                              children: [
+                                              children: const [
                                                 Text(
                                                   "Edifício Central",
                                                   style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
@@ -1091,7 +1087,7 @@ class _editarSobreState extends State<editarSobre> {
                                             ),
                                             Transform.rotate(
                                               angle: -90 * 3.14 / 180,
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.arrow_back_ios_rounded,
                                                 color: Colors.grey,
                                               ),
@@ -1100,46 +1096,44 @@ class _editarSobreState extends State<editarSobre> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(top: 20.0),
-                                          child: Container(
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  "Administrador",
-                                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(left: 4.0),
-                                                  child: Container(
-                                                    height: tamanho.height * 0.05,
-                                                    decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                        color: Colors.grey,
-                                                        width: 1,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                "Administrador",
+                                                style: TextStyle(fontWeight: FontWeight.bold),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 4.0),
+                                                child: Container(
+                                                  height: tamanho.height * 0.05,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color: Colors.grey,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius: BorderRadius.circular(4),
+                                                  ),
+                                                  child: Row(
+                                                    children: const [
+                                                      Padding(
+                                                        padding: EdgeInsets.only(left: 4.0),
+                                                        child: Text(
+                                                          '@eumunhozricardo',
+                                                        ),
                                                       ),
-                                                      borderRadius: BorderRadius.circular(4),
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        Padding(
-                                                          padding: const EdgeInsets.only(left: 4.0),
-                                                          child: Text(
-                                                            '@eumunhozricardo',
-                                                          ),
+                                                      Padding(
+                                                        padding: EdgeInsets.symmetric(horizontal: 5),
+                                                        child: Icon(
+                                                          Icons.mode_edit_rounded,
+                                                          color: Colors.grey,
                                                         ),
-                                                        Padding(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                                                          child: Icon(
-                                                            Icons.mode_edit_rounded,
-                                                            color: Colors.grey,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         )
                                       ],
@@ -1152,8 +1146,8 @@ class _editarSobreState extends State<editarSobre> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 16, 0 , 8),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 16, 0 , 8),
                     child: Text(
                       "Localização",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -1162,7 +1156,7 @@ class _editarSobreState extends State<editarSobre> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 26.0),
                     child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                           border: OutlineInputBorder(),
@@ -1170,8 +1164,8 @@ class _editarSobreState extends State<editarSobre> {
                         )
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       "Whatsapp",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -1180,7 +1174,7 @@ class _editarSobreState extends State<editarSobre> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 26.0),
                     child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                           border: OutlineInputBorder(),
@@ -1188,8 +1182,8 @@ class _editarSobreState extends State<editarSobre> {
                         )
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       "E-mail",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
@@ -1198,7 +1192,7 @@ class _editarSobreState extends State<editarSobre> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 26.0),
                     child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                           border: OutlineInputBorder(),
